@@ -1,26 +1,33 @@
-def calculate(num1, num2, operation):
-    result = 0
-    
-    if operation in ["add", "+"]:
-        result = num1 + num2
-    elif operation in ["subtract", "-"]:
-        result = num1 - num2
-    elif operation in ["multiply", "*"]:
-        result = num1 * num2
-    elif operation in ["divide", "/"]:
-        if num2 == 0:
-            return "Error: Cannot divide by zero"
-        result = num1 / num2
-    elif operation in ["modulus", "%"]:
-        if num2 == 0:
-            return "Error: Cannot modulus by zero"
-        result = num1 % num2
-    else:
-        return "Error: Invalid operation"
-    
-    return result
+String calculate(int num1, int num2, String operation) {
+  int result = 0;
 
-# Quick test:
-print(calculate(10, 5, "add"))     # 15
-print(calculate(10, 5, "+"))       # 15
-print(calculate(10, 0, "/"))       # Error message
+  if (operation == "add" || operation == "+") {
+    result = num1 + num2;
+  } else if (operation == "subtract" || operation == "-") {
+    result = num1 - num2;
+  } else if (operation == "multiply" || operation == "*") {
+    result = num1 * num2;
+  } else if (operation == "divide" || operation == "/") {
+    if (num2 == 0) {
+      return "Error: Cannot divide by zero";
+    }
+    result = num1 ~/ num2;
+  } else if (operation == "modulus" || operation == "%") {
+    if (num2 == 0) {
+      return "Error: Cannot modulus by zero";
+    }
+    result = num1 % num2;
+  } else {
+    return "Error: Invalid operation";
+  }
+
+  return result.toString();
+}
+
+void main() {
+  print(calculate(10, 5, "add"));
+  print(calculate(10, 5, "+"));
+  print(calculate(10, 0, "/"));
+  print(calculate(10, 3, "%"));
+  print(calculate(10, 3, "power"));
+}
